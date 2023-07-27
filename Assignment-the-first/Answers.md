@@ -23,8 +23,8 @@
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz
-5. Pseudocode
-6. High level functions. For each function, be sure to include:
+4. Pseudocode
+5. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
     3. Test examples for individual functions
