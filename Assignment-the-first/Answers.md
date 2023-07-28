@@ -36,6 +36,8 @@ Index: GTA
 Output:TAC
    
     3. We will have tests for each scenario we need (matched,index-hopped,unknown scenarios)
+```
+{
 Open all four files and read them, in a while true loop execute these commands in order of least computationally intesnse to most computationally
     with open (4 read files, "r") as rf1,rf2,rf3,rf4:
         while true
@@ -49,8 +51,8 @@ Open all four files and read them, in a while true loop execute these commands i
                     add the index-index to both fw and rv if fw_barcode=rv_barcode and output to matched 
                 *elif: 
                     fw1=rev AND index in list: send to index hopped
-                    }
-                    ```
+}
+ ```
 6. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
