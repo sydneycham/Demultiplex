@@ -20,34 +20,33 @@
 2. Describe output : The output will be 52 fastq files with modified headers that include indexes, 48 for matched indexes, 2 for unknown indexes; one for each read (1 and 4), and 2 for hopped indexes; one for each read (1 and 4). 
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 4. Pseudocode
-   Def rv_compliment(index:string)-->compliment:string
-    '''This function will take an index, reverse the order, and then flip the genetic code to its corresponding compliment'''
-    Make it into a dictionary,I will call it compliment_dictionary 
-        The key is one letter of genetic code
+   Def rev_comp(index:string)-->complement:string
+    '''This function will take an input DNA string with N's and produce a reverse complement string of that string'''
+    Make it into a dictionary,and call it comp_dictionary 
+        The key is one nucleotide of genetic code
         The value is its corresponding base pair 
         Ex.... {A:T,T:A, G:C, C:G} 
-    Then i will reverse the order of the sequence, then make the changes to the code 
-    Return(compliment)
-Example... 
-Index: ATC
-    Intermediate: CTA
-Output:GAT
+    Then i will reverse the order of the sequence, and create a new string with the reverse compliment
+    Return(complement)
+Example:
+Index: GTA
+    Intermediate: ATG
+Output:TAC
    
-    3. Test examples for individual functions
-    4. Return statement
-I will the open all four files and read them, in a while true loop i will do these four things, ordering from least computationally intesnse to most computationally
-    with open (all 4 files, "r") as f1,f2,f3,f4:
+    3. We will have tests for each scenario we need (matched,index-hopped,unknown scenarios)
+Open all four files and read them, in a while true loop execute these commands in order of least computationally intesnse to most computationally
+    with open (4 read files, "r") as rf1,rf2,rf3,rf4:
         while true
-            *extract sequence line & header (f1,f4)
+            #get header (rf1,rf4)
+            #get sequence (rf1,rf4)
             header=line
             sequence=line
-            *do same on file 3, but call our reverse compliment function on the sequence line of these 
-                *if N is present in sequence line or not in list of index: send to unknown
+            *do same on read file 3, but use our reverse complement function on the sequence line of these 
+                *if N is present in sequence line or not in list of index: reverse complement, attach to header, and output to unknown
                 *elif:
-                    add the index-index to both fw and rv if fw_barcode=rv_barcode: send to dual matched 
-
+                    add the index-index to both fw and rv if fw_barcode=rv_barcode and output to matched 
                 *elif: 
-                    fw!=rv AND index in list: send to index hopped
+                    fw1=rev AND index in list: send to index hopped
 6. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
