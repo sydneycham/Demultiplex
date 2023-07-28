@@ -20,8 +20,10 @@
 2. Describe output : The output will be 52 fastq files with modified headers that include indexes, 48 for matched indexes, 2 for unknown indexes; one for each read (1 and 4), and 2 for hopped indexes; one for each read (1 and 4). 
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 4. Pseudocode
+   ```
+   {
    Def rev_comp(index:string)-->complement:string
-    '''This function will take an input DNA string with N's and produce a reverse complement string of that string'''
+    ```This function will take an input DNA string with N's and produce a reverse complement string of that string```
     Make it into a dictionary,and call it comp_dictionary 
         The key is one nucleotide of genetic code
         The value is its corresponding base pair 
@@ -47,6 +49,8 @@ Open all four files and read them, in a while true loop execute these commands i
                     add the index-index to both fw and rv if fw_barcode=rv_barcode and output to matched 
                 *elif: 
                     fw1=rev AND index in list: send to index hopped
+                    }
+                    ```
 6. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
