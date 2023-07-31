@@ -18,6 +18,12 @@
     4. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/7211a962-c38f-4e0e-ab2c-e87598fb4266)
     5. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/f74b5587-93f0-4c8e-8174-5a4343cdcda4)
 
+3. What is a good quality score cutoff for index reads and biological read pairs to utilize for sample identification and downstream analysis, respectively? Justify your answer.
+   A good quality score cutoff would be 30 because a q score of 30 basically means that the reads you are getting are near perfect and that's what we would want in our alignment. A cutoff of 20 would be too low (1 in 100 errors). 
+
+4. How many indexes have undetermined (N) base calls? (Utilize your command line tool knowledge. Submit the command(s) you used. CHALLENGE: use a one-line command)
+```zcat 1294_S1_L008_R2_001.fastq.gz | sed -n '2~4p' | grep "N" | wc -l```
+3976613
 
 
 
