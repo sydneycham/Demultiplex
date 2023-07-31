@@ -16,7 +16,8 @@
 
     3. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/488d8f24-ac40-484c-bef2-65b6c12123e2)
     4. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/7211a962-c38f-4e0e-ab2c-e87598fb4266)
-    5. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/93ff7365-aabc-41a4-8c92-8079acfa9b40)
+    5. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/f74b5587-93f0-4c8e-8174-5a4343cdcda4)
+
 
 
 
