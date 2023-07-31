@@ -12,8 +12,14 @@
 
 2. Per-base NT distribution
     1. Use markdown to insert your 4 histograms here.
-    2. **YOUR ANSWER HERE**
-    3. **YOUR ANSWER HERE**
+    2. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/702084fb-b66e-4879-83ee-a5e12e74581d)
+
+    3. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/488d8f24-ac40-484c-bef2-65b6c12123e2)
+    4. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/7211a962-c38f-4e0e-ab2c-e87598fb4266)
+    5. ![image](https://github.com/sydneycham/Demultiplexing/assets/115667425/93ff7365-aabc-41a4-8c92-8079acfa9b40)
+
+
+
     
 ## Part 2
 1. Define the problem : We have outputs from a sequencer that we are demultiplex. We are also trying to find hopped, unknow, and matched indexes.
