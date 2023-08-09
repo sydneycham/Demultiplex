@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import bioinfo
 import argparse
+import gzip
 
 def get_args():
     parser= argparse.ArgumentParser()
@@ -18,6 +19,17 @@ f2=args.filename2
 f3=args.filename3
 f4=args.filename4
 #o=args.output
+
+filename_dict={}
+file="/projects/bgmp/shared/2017_sequencing/indexes.txt"
+with open(file, "r") as fh:
+    fh.readline()
+    for line in fh:
+        index=line.strip().split("\t")[4]
+        for item in index:
+            R1_matched=open("output/"+index+"_R1.fq","w")
+            R2_matched=open("output/"+index+"_R2.fq","w")
+            filename_dict[index]=(R1_matched,R2_matched)
 
 unknown_file1=open("unknown_read1.fq","w")
 unknown_file4=open("unknown_read2.fq","w")
@@ -52,7 +64,7 @@ def append_header(index1,index2,header):
     return new_header
 
 #open all four files and write lines to new files
-with open(f1, "r") as fh1, open(f2, "r") as fh2, open(f3, "r") as fh3, open(f4, "r") as fh4:
+with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt") as fh3, gzip.open(f4, "rt") as fh4:
     while True:
         record_r1 = readfour(fh1)
         if record_r1 == ["","","",""]:
@@ -82,8 +94,8 @@ with open(f1, "r") as fh1, open(f2, "r") as fh2, open(f3, "r") as fh3, open(f4, 
         elif index in knowndict and index==reverse_index:
             knowndict[index]+=1
             instances_dict["matched"]+=1
-            matched_file1.write(record_r1[0]+'\n'+record_r1[1]+'\n'+record_r1[2]+'\n'+record_r1[3]+'\n')
-            matched_file4.write(record_r4[0]+'\n'+record_r4[1]+'\n'+record_r4[2]+'\n'+record_r4[3]+'\n')
+            filename_dict[index][0].write(record_r1[0]+'\n'+record_r1[1]+'\n'+record_r1[2]+'\n'+record_r1[3]+'\n')
+            filename_dict[index][1].write(record_r4[0]+'\n'+record_r4[1]+'\n'+record_r4[2]+'\n'+record_r4[3]+'\n')
             if new_key in indexpairs:
                 indexpairs[new_key]+=1
             else:
