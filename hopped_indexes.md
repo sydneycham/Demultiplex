@@ -1,6 +1,6 @@
 
-| index |	value	| percentage hopped reads
-|---  ---|---|
+   index   	value	   percentage hopped reads
+  ---  ---  ---  
 TATGGCAC-TGTTCCGT	88571	0.024383151028184738%
 TATGGCAC-CTCTGGAT	1574	0.00043331428705064613%
 TCTTCGAC-CTCTGGAT	5933	0.0016333250731076772%
