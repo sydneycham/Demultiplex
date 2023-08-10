@@ -44,10 +44,20 @@ knowndict = {"GTAGCGTA":0,"AACAGCGA":0,"CTCTGGAT":0,"CACTTCAC":0,"CGATCGAT":0,"G
 #initializing matched, hopped and unknown dictionaries
 instances_dict = {"matched":0,"hopped":0,"unknown":0}
 
+unknown_file1=open("output/"+"unknown_R1.fq","w")
+unknown_file4=open("output/"+"unknown_R2.fq","w")
+
+hopped_file1=open("output/"+"hopped_R1.fq","w")
+hopped_file4=open("output/"+"hopped_R2.fq","w")
+
 #empty dict to store mismatched pairs
 unknown_dict = {}
 
 indexpairs={}
+
+matchedindex_dict={}
+
+hopped_index_dict={}
 
 
 def readfour(fh):
@@ -63,8 +73,11 @@ def append_header(index1,index2,header):
     new_header=header +" "+ index1 + "-" + index2
     return new_header
 
+totalreads=0
+
 #open all four files and write lines to new files
 with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt") as fh3, gzip.open(f4, "rt") as fh4:
+#with open(f1, "r") as fh1, open(f2, "r") as fh2, open(f3, "r") as fh3, open(f4, "r") as fh4:
     while True:
         record_r1 = readfour(fh1)
         if record_r1 == ["","","",""]:
@@ -72,13 +85,13 @@ with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt")
         record_r2 = readfour(fh2)
         record_r3 = readfour(fh3)
         record_r4 = readfour(fh4)
+        totalreads+=1
         reverse_index = bioinfo.rev_comp(record_r3[1])
         #new_header = " " +record_r1[0]+" " +record_r2[1]+"-"+reverse_index
 
         #setting headers for each read1 and read4
         record_r1[0]=append_header(record_r2[1],reverse_index,record_r1[0])
         record_r4[0]=append_header(record_r2[1],reverse_index,record_r4[0])
-        print(record_r1[0], record_r4[0])
         index=record_r2[1] 
 
         new_key=(index+'-'+reverse_index)
@@ -96,6 +109,10 @@ with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt")
             instances_dict["matched"]+=1
             filename_dict[index][0].write(record_r1[0]+'\n'+record_r1[1]+'\n'+record_r1[2]+'\n'+record_r1[3]+'\n')
             filename_dict[index][1].write(record_r4[0]+'\n'+record_r4[1]+'\n'+record_r4[2]+'\n'+record_r4[3]+'\n')
+            if new_key in matchedindex_dict:
+                matchedindex_dict[new_key]+=1
+            else:
+                matchedindex_dict[new_key]=1
             if new_key in indexpairs:
                 indexpairs[new_key]+=1
             else:
@@ -104,6 +121,10 @@ with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt")
             instances_dict["hopped"]+=1
             hopped_file1.write(record_r1[0]+'\n'+record_r1[1]+'\n'+record_r1[2]+'\n'+record_r1[3]+'\n')
             hopped_file4.write(record_r4[0]+'\n'+record_r4[1]+'\n'+record_r4[2]+'\n'+record_r4[3]+'\n')
+            if new_key in hopped_index_dict:
+                hopped_index_dict[new_key]+=1
+            else:
+                hopped_index_dict[new_key]=1
             if new_key in indexpairs:
                 indexpairs[new_key]+=1
             else:
@@ -112,7 +133,15 @@ with gzip.open(f1, "rt") as fh1, gzip.open(f2, "rt") as fh2, gzip.open(f3, "rt")
         #if record_r2[1] in knowndict and record_r2[1] == reverse_index:
             #instances_dict[matched]+=1
 print (instances_dict)
-print(indexpairs)
+#print(indexpairs)
+print(f'index\tvalue\tpercentage mapped reads')
+for index in matchedindex_dict:
+    print(f'{index}\t{matchedindex_dict[index]}\t{(matchedindex_dict[index]/totalreads)*100}%')
+print(f'index\tvalue\tpercentage hopped reads')
+for index in hopped_index_dict:
+    print(f'{index}\t{hopped_index_dict[index]}\t{(hopped_index_dict[index]/totalreads)*100}%')
+print(matchedindex_dict) 
+
 
 unknown_file1.close()
 unknown_file4.close()
