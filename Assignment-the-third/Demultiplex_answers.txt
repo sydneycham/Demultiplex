@@ -1,0 +1,6 @@
+Percentage of reads matched, hopped and unknown. 
+{'matched': 331755033, 'hopped': 707740, 'unknown': 30783962}
+
+Matched Index percentages can be found in matched_indexes.txt
+
+Hopped index percentages can be found in hopped_indexes.txt
