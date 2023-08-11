@@ -67,6 +67,7 @@ Path to desired files
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz 
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz  
     /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz   
+8-8-2023
 
 Created a dictionary to hold the total amount of matched, hopped, and unknown instances and tally them
 Created a dictionary to hold each matched index pairing and tally them, as well as another dictionary for hopped
