@@ -79,7 +79,7 @@ Adding parts in if statements to account for the tallied index pairings
         
 
 
-8-8-2023
+8-9-2023
 
 Everything seems to be working on the test files so time to create a script to run this (demultiplex_slurm.sh)
     slurm-26264
